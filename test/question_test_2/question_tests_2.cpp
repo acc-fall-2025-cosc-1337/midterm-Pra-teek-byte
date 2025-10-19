@@ -1,12 +1,36 @@
-#define CATCH_CONFIG_MAIN  // This tells Catch to provide a main() - only do this in one cpp file
-#include "catch.hpp"
-#include "question2.h"
+#include <iostream>
+#include <iomanip>
+#include "../../src/question_2/question2.h" 
 
-TEST_CASE("Verify Test Configuration", "verification") {
-	REQUIRE(true == true);
+using namespace std;
+
+void run_test(double sales, double expected)
+{
+    double result = get_sales_commission(sales);
+
+    cout << fixed << setprecision(2);
+    cout << "Sales: " << sales 
+         << " | Expected: " << expected 
+         << " | Got: " << result << " ";
+
+    if (result == expected)
+        cout << "✅ PASS" << endl;
+    else
+        cout << "❌ FAIL" << endl;
 }
 
-TEST_CASE("test")
+int main()
 {
-	REQUIRE(test_config() == true);
+    cout << "---- Running Commission Function Tests ----" << endl;
+
+    // Each test case from your table
+    run_test(100, 5);
+    run_test(750, 45);
+    run_test(1100, 77);
+    run_test(1750, 140);
+    run_test(-50, 0);
+
+    cout << "-------------------------------------------" << endl;
+
+    return 0;
 }
