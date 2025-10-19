@@ -1,12 +1,18 @@
-#define CATCH_CONFIG_MAIN  // This tells Catch to provide a main() - only do this in one cpp file
-#include "catch.hpp"
-#include "question3.h"
+#include <iostream>
+#include "../../src/question_3/question3.h"
+using namespace std;
 
-TEST_CASE("Verify Test Configuration", "verification") {
-	REQUIRE(true == true);
-}
-
-TEST_CASE("test")
+int main()
 {
-	REQUIRE(test_config() == true);
+    cout << "Testing roll_die() 10 times:" << endl;
+    for (int i = 0; i < 10; i++)
+    {
+        int result = roll_die();
+        cout << "Roll " << i+1 << ": " << result;
+        if (result >= 1 && result <= 6)
+            cout << " ✅ OK" << endl;
+        else
+            cout << " ❌ ERROR" << endl;
+    }
+    return 0;
 }

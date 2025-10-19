@@ -1,6 +1,16 @@
 #include "question3.h"
+#include <cstdlib>  
+#include <ctime>    
 
-bool test_config()
+int roll_die()
 {
-    return true;
+    // Seed rand only once
+    static bool seeded = false;
+    if (!seeded)
+    {
+        srand(time(0));
+        seeded = true;
+    }
+
+    return (rand() % 6) + 1;
 }
