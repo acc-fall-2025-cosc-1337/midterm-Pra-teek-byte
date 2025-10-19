@@ -1,12 +1,26 @@
-#define CATCH_CONFIG_MAIN  // This tells Catch to provide a main() - only do this in one cpp file
-#include "catch.hpp"
-#include "question4.h"
+#include <iostream>
+#include "../../src/question_4/question4.h"
+using namespace std;
 
-TEST_CASE("Verify Test Configuration", "verification") {
-	REQUIRE(true == true);
+void run_test(int input, const string& expected)
+{
+    string result = get_factorial_sequence(input);
+    cout << "Input: " << input << " | Expected: " << expected
+         << " | Got: " << result;
+    if (result == expected)
+        cout << " ✅ PASS" << endl;
+    else
+        cout << " ❌ FAIL" << endl;
 }
 
-TEST_CASE("test")
+int main()
 {
-	REQUIRE(test_config() == true);
+    cout << "Testing get_factorial_sequence()" << endl;
+
+    run_test(3, "1x2x3=6");
+    run_test(4, "1x2x3x4=24");
+    run_test(5, "1x2x3x4x5=120");
+    run_test(6, "1x2x3x4x5x6=720");
+
+    return 0;
 }
