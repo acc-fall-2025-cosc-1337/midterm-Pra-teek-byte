@@ -1,12 +1,11 @@
-#define CATCH_CONFIG_MAIN  // This tells Catch to provide a main() - only do this in one cpp file
-#include "catch.hpp"
-#include "question1.h"
+#include <iostream>
+#include <cassert>
+#include "../../src/question_1/question1.h"
 
-TEST_CASE("Verify Test Configuration", "verification") {
-	REQUIRE(true == true);
-}
-
-TEST_CASE("test")
-{
-	REQUIRE(test_config() == true);
+int main() {
+    assert(transcribe_dna_into_rna("GATGGAACCTGACTGACTGAAATT") == "GAUGGAACCUGACUGACUGAAAUU");
+    assert(transcribe_dna_into_rna("TTTT") == "UUUU");
+    assert(transcribe_dna_into_rna("ACG") == "ACG");
+    std::cout << "All test cases passed!" << std::endl;
+    return 0;
 }
